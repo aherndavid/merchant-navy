@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norman Ahern — A Life at Sea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0d1f2d;
+    --ocean:   #1a3a52;
+    --horizon: #4a7fa5;
+    --foam:    #e8f0f5;
+    --sand:    #f5f0e8;
+    --ink:     #1a1a1a;
+    --mist:    #6b8899;
+    --gold:    #c9a84c;
+    --white:   #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13, 31, 45, 0.96);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+  }
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--foam);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(170deg, var(--navy) 0%, var(--ocean) 60%, #1e4d6b 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle wave lines — the site's signature */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        -8deg,
+        transparent,
+        transparent 38px,
+        rgba(74,127,165,0.07) 38px,
+        rgba(74,127,165,0.07) 40px
+      );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--white);
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-dates {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--mist);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .hero-desc {
+    max-width: 520px;
+    color: var(--foam);
+    font-size: 1.05rem;
+    opacity: 0.85;
+    line-height: 1.8;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+  }
+
+  /* Horizon line */
+  .horizon-bar {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--horizon) 60%, transparent 100%);
+    margin-bottom: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 1.8rem;
+    font-weight: 400;
+  }
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  /* ── TIMELINE ── */
+  #story { background: var(--white); max-width: 100%; padding: 5rem 0; }
+  #story > .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .timeline {
+    position: relative;
+    margin-top: 3rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 6px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--horizon));
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 1.4rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .tl-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .tl-dot.filled { background: var(--gold); }
+  .tl-content {}
+  .tl-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+  .tl-body {
+    font-size: 0.95rem;
+    color: #444;
+    max-width: 560px;
+  }
+  .tl-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--foam);
+    color: var(--ocean);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  /* ── SHIPS ── */
+  #ships { background: var(--sand); }
+
+  .ships-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .ship-card {
+    background: var(--white);
+    border-top: 3px solid var(--gold);
+    padding: 1.6rem;
+    position: relative;
+  }
+  .ship-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .ship-meta {
+    font-size: 0.78rem;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .ship-desc {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .ship-photo-placeholder {
+    margin-top: 1.2rem;
+    width: 100%;
+    height: 140px;
+    background: var(--foam);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px dashed var(--horizon);
+    color: var(--mist);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .ship-photo-placeholder:hover { background: #dce8f0; }
+
+  /* ── DISCHARGE BOOK ── */
+  #documents { background: var(--white); max-width: 100%; padding: 5rem 0; }
+  #documents > .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .doc-block {
+    background: var(--sand);
+    border-left: 4px solid var(--gold);
+    padding: 2rem 2.2rem;
+    margin-top: 2rem;
+    max-width: 640px;
+  }
+  .doc-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+  }
+  .doc-block p {
+    font-size: 0.93rem;
+    color: #555;
+    margin-bottom: 0.6rem;
+  }
+  .doc-upload-area {
+    margin-top: 1.4rem;
+    padding: 1.4rem;
+    border: 1.5px dashed var(--horizon);
+    text-align: center;
+    color: var(--mist);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--white);
+    transition: background 0.2s;
+  }
+  .doc-upload-area:hover { background: var(--foam); }
+
+  /* ── PORTS ── */
+  #ports { background: var(--sand); }
+
+  .voyage-intro {
+    color: #555;
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  /* Route ribbon */
+  .route-ribbon {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: 3.5rem;
+    background: var(--white);
+    padding: 1.2rem 1.6rem;
+    border-top: 3px solid var(--gold);
+    overflow-x: auto;
+  }
+  .route-stop {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .route-arrow {
+    color: var(--gold);
+    margin: 0 0.5rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  /* Port story cards */
+  .port-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .port-story {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+    border-top: 1px solid var(--foam);
+    padding: 2rem 0;
+  }
+  .port-story:last-child { border-bottom: 1px solid var(--foam); }
+  .ps-left {
+    padding-right: 2rem;
+    border-right: 1px solid var(--foam);
+  }
+  .ps-location {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+  .ps-country {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mist);
+    margin-bottom: 0.6rem;
+  }
+  .ps-duration {
+    font-size: 0.72rem;
+    color: var(--horizon);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .ps-right {
+    padding-left: 2rem;
+  }
+  .ps-body {
+    font-size: 0.93rem;
+    color: #444;
+    line-height: 1.75;
+  }
+  .ps-body strong { color: var(--navy); font-weight: 500; }
+  .ps-tags {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .ps-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--foam);
+    color: var(--ocean);
+    padding: 0.2rem 0.55rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .ps-tag.highlight {
+    background: #fdf3dc;
+    color: #8a6a00;
+  }
+
+  .placeholder-note {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--mist);
+    font-style: italic;
+  }
+
+  @media (max-width: 600px) {
+    .port-story { grid-template-columns: 1fr; }
+    .ps-left { border-right: none; border-bottom: 1px solid var(--foam); padding-right: 0; padding-bottom: 1rem; margin-bottom: 1rem; }
+    .ps-right { padding-left: 0; }
+    .route-ribbon { font-size: 0.8rem; }
+  }
+
+  /* ── PHOTOS ── */
+  #photos { background: var(--white); max-width: 100%; padding: 5rem 0; }
+  #photos > .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .photo-slot {
+    aspect-ratio: 4/3;
+    background: var(--foam);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px dashed var(--horizon);
+    color: var(--mist);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .photo-slot:hover { background: #dce8f0; }
+  .photo-slot.featured {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: var(--mist);
+    text-align: center;
+    padding: 3rem 2.5rem;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  footer .footer-years {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero-inner, section { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .photo-slot.featured { grid-column: span 2; }
+    .timeline::before { left: 8px; }
+    .tl-dot { width: 18px; height: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Norman Ahern</span>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#ships">Ships</a></li>
+    <li><a href="#ports">Ports</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#documents">Documents</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Merchant Navy · 1951 onwards</p>
+    <h1>Norman<br><em>Ahern</em></h1>
+    <p class="hero-dates">26 July 1934 — A life shaped by the sea</p>
+    <p class="hero-desc">
+      At sixteen years old, Norman Ahern signed on for sea school in Gloucester,
+      collected his discharge book from the labour exchange on Lednal Street,
+      and stepped aboard his first ship in the London Docks.
+      This is his story.
+    </p>
+  </div>
+</header>
+<div class="horizon-bar"></div>
+
+<!-- STORY / TIMELINE -->
+<div id="story">
+  <div class="section-inner">
+    <p class="section-label">The Early Years</p>
+    <h2 class="section-title">How it all began</h2>
+    <div class="divider"></div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot filled"></div>
+        <div class="tl-content">
+          <p class="tl-date">June 1951</p>
+          <h3 class="tl-title">Sea School, Gloucester</h3>
+          <p class="tl-body">
+            Norman signed up for an eight-week course at sea school in Gloucester — his first
+            formal step into the Merchant Navy. He was sixteen years old.
+          </p>
+          <span class="tl-tag">Training</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-date">Late Summer 1951</p>
+          <h3 class="tl-title">Lednal Street, London</h3>
+          <p class="tl-body">
+            A week after finishing sea school, Norman reported to the Merchant Navy Pool
+            office on Lednal Street in London. A clerk informed him of his allocation
+            and assigned him to his first ship.
+          </p>
+          <span class="tl-tag">Assignment</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <p class="tl-date">Late Summer 1951</p>
+          <h3 class="tl-title">The Discharge Book</h3>
+          <p class="tl-body">
+            From the Labour Exchange, Norman was issued his Discharge Book — the official
+            record carried by every Merchant Navy sailor. An entry of <strong>VG</strong> meant
+            good conduct; <strong>DR</strong> would indicate the opposite. Norman's record would
+            follow him across every ship and every ocean he sailed.
+          </p>
+          <span class="tl-tag">Official Record</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot filled"></div>
+        <div class="tl-content">
+          <p class="tl-date">Late Summer 1951</p>
+          <h3 class="tl-title">KG5 — First Ship, London Docks</h3>
+          <p class="tl-body">
+            Norman's first posting was to KG5 (King George V), moored in the
+            London Docks. He walked aboard a merchant vessel for the very first time,
+            and his seafaring life began.
+          </p>
+          <span class="tl-tag">First Voyage</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SHIPS -->
+<section id="ships">
+  <p class="section-label">The Vessels</p>
+  <h2 class="section-title">Ships Norman sailed on</h2>
+  <div class="divider"></div>
+  <p style="color:#555; font-size:0.95rem; max-width:540px;">
+    Each ship below represents a chapter of Norman's career. Share more ships and
+    we'll add them here — with dates, routes, and photos if you have them.
+  </p>
+
+  <div class="ships-grid">
+
+    <div class="ship-card">
+      <h3 class="ship-name">KG5</h3>
+      <p class="ship-meta">King George V · London Docks · 1951</p>
+      <p class="ship-desc">Norman's first ship. Allocated by the clerk at Lednal Street and berthed in the London Docks when he stepped aboard for the very first time.</p>
+      <div class="ship-photo-placeholder">+ Add photo</div>
+    </div>
+
+    <!-- Placeholder for more ships -->
+    <div class="ship-card" style="border-top-color: var(--foam); opacity: 0.5;">
+      <h3 class="ship-name" style="color:var(--mist);">More ships to come</h3>
+      <p class="ship-meta">Share names & dates</p>
+      <p class="ship-desc">Add the ships Norman served on and we'll build out each card with details, photos, and routes.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTS -->
+<section id="ports">
+  <p class="section-label">The Voyage</p>
+  <h2 class="section-title">Ports of call</h2>
+  <div class="divider"></div>
+
+  <p class="voyage-intro">
+    Norman's first long voyage took him from the London Docks eastward through the Suez Canal
+    and on across the Indian Ocean and South China Sea — a journey of thousands of miles that
+    brought him face to face with a world still marked by the Second World War and stirring
+    with new tensions.
+  </p>
+
+  <!-- Route ribbon -->
+  <div class="route-ribbon">
+    <span class="route-stop">London</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Port Said</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Suez Canal</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Red Sea</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Aden</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Colombo</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Bombay</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Singapore</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Penang</span>
+    <span class="route-arrow">→</span>
+    <span class="route-stop">Hong Kong</span>
+  </div>
+
+  <div class="port-stories">
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Port Said</p>
+        <p class="ps-country">Egypt</p>
+        <p class="ps-duration">En route</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          The gateway to the Suez Canal — Norman's first sight of Africa and the Arab world.
+          Port Said was a busy, cosmopolitan port city at the northern entrance to the canal,
+          a place where East and West collided in the dockside bazaars and coal depots.
+          From here the ship moved south into the canal itself.
+        </p>
+        <div class="ps-tags"><span class="ps-tag">Canal entry</span><span class="ps-tag">Egypt</span></div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Suez Canal &amp; Red Sea</p>
+        <p class="ps-country">Egypt / Arabia</p>
+        <p class="ps-duration">Transit</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          The canal — barely wide enough in places for two ships to pass — cut through the
+          desert for over a hundred miles. Beyond it lay the Red Sea, a narrow, blazing hot
+          stretch of water flanked by the Arabian Peninsula and the Horn of Africa, leading
+          south to Aden and the open Indian Ocean.
+        </p>
+        <div class="ps-tags"><span class="ps-tag">Transit</span><span class="ps-tag">Red Sea</span></div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Aden</p>
+        <p class="ps-country">Yemen</p>
+        <p class="ps-duration">~4 nights</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          The ship stopped at Aden — then a British Crown Colony — for around four nights.
+          Perched at the mouth of the Red Sea, it was one of the world's great refuelling
+          and resupply ports, a rocky, sun-baked place with a deep natural harbour. For a
+          seventeen-year-old from England, it was unlike anything he had seen before.
+        </p>
+        <div class="ps-tags"><span class="ps-tag">~4 nights</span><span class="ps-tag">British Colony</span><span class="ps-tag">Arabian Peninsula</span></div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Colombo</p>
+        <p class="ps-country">Ceylon (Sri Lanka)</p>
+        <p class="ps-duration">Stopover</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          The ship called at Colombo on the island of Ceylon — today's Sri Lanka — before
+          continuing on to Bombay. A lush, tropical port city with a very different character
+          to the arid ports of Arabia.
+        </p>
+        <div class="ps-tags"><span class="ps-tag">Indian Ocean</span><span class="ps-tag">Ceylon</span></div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Bombay</p>
+        <p class="ps-country">India</p>
+        <p class="ps-duration">~1 week</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          Norman spent around a week in Bombay — India's great western port, teeming and
+          enormous. The city had only recently gained independence from Britain in 1947 and
+          was still finding its footing. The docks were vast, the streets extraordinary,
+          and the scale of everything unlike anything Norman had encountered in England.
+        </p>
+        <div class="ps-tags"><span class="ps-tag">~1 week</span><span class="ps-tag">Post-independence India</span></div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Singapore</p>
+        <p class="ps-country">Malaya</p>
+        <p class="ps-duration">~1 week</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          Singapore in 1951 was on edge. <strong>Racial tensions between the Indian and
+          Malay communities</strong> spilled into the streets, and Norman witnessed the unrest
+          first hand. Despite this, the city's famous <strong>night markets</strong> were vivid
+          and alive after dark — a sensory world of food stalls, traders, and noise that ran
+          through the small hours.
+        </p>
+        <p class="ps-body" style="margin-top:0.8rem;">
+          One night, Norman and a friend strayed into the wrong part of the city.
+          <strong>They were held at gunpoint</strong> — a man with a firearm told them in no
+          uncertain terms they were not welcome in the area and ordered them to move on. They
+          left quickly.
+        </p>
+        <p class="ps-body" style="margin-top:0.8rem;">
+          He also saw <strong>Raffles</strong> — the legendary colonial hotel and bar where
+          the wealthy and the well-connected gathered, a world away from the dock streets
+          Norman moved through.
+        </p>
+        <div class="ps-tags">
+          <span class="ps-tag">~1 week</span>
+          <span class="ps-tag highlight">Held at gunpoint</span>
+          <span class="ps-tag">Night markets</span>
+          <span class="ps-tag">Raffles Bar</span>
+          <span class="ps-tag">Racial riots</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Penang</p>
+        <p class="ps-country">Malaya · Island</p>
+        <p class="ps-duration">Few nights</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          From Singapore, the ship sailed north-west to the island of Penang — a lush,
+          green island off the Malayan coast. During his time ashore, Norman came across
+          something that stopped him in his tracks: <strong>an old Japanese tank, still
+          sitting in the street where it had been abandoned or destroyed</strong> at the end
+          of the war just six years earlier. A raw reminder that the war had been fought
+          right here, on these pavements, not some distant battlefield.
+        </p>
+        <div class="ps-tags">
+          <span class="ps-tag">Few nights</span>
+          <span class="ps-tag highlight">Japanese tank in the street</span>
+          <span class="ps-tag">Post-war Malaya</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="port-story">
+      <div class="ps-left">
+        <p class="ps-location">Hong Kong</p>
+        <p class="ps-country">British Colony</p>
+        <p class="ps-duration">Extended stay</p>
+      </div>
+      <div class="ps-right">
+        <p class="ps-body">
+          Hong Kong was where Norman spent the most time — working aboard ship, receiving
+          cargo and customers, and exploring one of the most extraordinary cities on earth.
+        </p>
+        <p class="ps-body" style="margin-top:0.9rem;">
+          <strong>The Star Ferry.</strong> For just <strong>sixpence</strong>, Norman crossed
+          the harbour from Kowloon on the mainland to Hong Kong Island — about a mile of open
+          water. The ferry carried around <strong>500 passengers</strong> at a time, packed with
+          locals, traders, and the occasional merchant sailor.
+        </p>
+        <p class="ps-body" style="margin-top:0.9rem;">
+          <strong>The markets.</strong> Rolex watches — the real thing — were on sale at the
+          market stalls for <strong>£25</strong>. The markets were dense, loud, and spilling
+          with goods from across Asia.
+        </p>
+        <p class="ps-body" style="margin-top:0.9rem;">
+          <strong>Repulse Bay.</strong> Norman went swimming at Repulse Bay, the famous
+          sheltered beach on the south side of Hong Kong Island — beautiful, and haunted by
+          the violence of the Japanese invasion just a decade earlier.
+        </p>
+        <p class="ps-body" style="margin-top:0.9rem;">
+          <strong>The hospital — a story that stayed with him.</strong> Norman visited the
+          site where, during the Japanese occupation in December 1941, forces took control
+          of a hospital. The nurses were given a terrible choice:
+          <strong>walk into the sea, or be shot.</strong> Many walked into the water.
+          Standing there only ten years after it happened, Norman felt the full weight of it.
+        </p>
+        <p class="ps-body" style="margin-top:0.9rem;">
+          <strong>The typhoons.</strong> When the high winds came, the ship was moved from
+          the docks and <strong>tied to a buoy in the harbour</strong> to ride out the storm.
+          The lightning that accompanied the typhoons lit up the entire harbour —
+          an awesome and frightening sight for a young sailor far from home.
+        </p>
+        <div class="ps-tags">
+          <span class="ps-tag">Extended stay</span>
+          <span class="ps-tag">Star Ferry · 6d</span>
+          <span class="ps-tag">Repulse Bay</span>
+          <span class="ps-tag highlight">Hospital massacre site</span>
+          <span class="ps-tag highlight">Typhoon at anchor</span>
+          <span class="ps-tag">Market stalls</span>
+          <span class="ps-tag">Rolex · £25</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end port-stories -->
+
+  <!-- Return journey -->
+  <div style="margin-top:3.5rem; padding-top:2.5rem; border-top:2px solid var(--foam);">
+    <p class="section-label" style="margin-bottom:0.6rem;">The Return</p>
+    <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--navy); font-weight:400; margin-bottom:1rem;">The long way home</h3>
+    <p style="color:#555; font-size:0.93rem; max-width:600px; line-height:1.8; margin-bottom:1.4rem;">
+      After Hong Kong, Norman retraced the entire outward route — Penang, Singapore, Bombay,
+      Colombo, Aden, the Red Sea, the Suez Canal, Port Said — and back out into the
+      Mediterranean and home to London. The return journey took roughly the same time as the
+      outward voyage. The same ports, but seen now through eyes that had witnessed far more
+      than when the ship first passed through.
+    </p>
+    <div class="route-ribbon" style="margin-bottom:0;">
+      <span class="route-stop">Hong Kong</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Penang</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Singapore</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Bombay</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Colombo</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Aden</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Red Sea</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Suez Canal</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">Port Said</span>
+      <span class="route-arrow">→</span>
+      <span class="route-stop">London</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- PHOTOS -->
+<div id="photos">
+  <div class="section-inner">
+    <p class="section-label">The Gallery</p>
+    <h2 class="section-title">Photographs</h2>
+    <div class="divider"></div>
+    <p style="color:#555; font-size:0.95rem; max-width:540px; margin-bottom: 0;">
+      Photos of Norman, his ships, and the places he sailed to — share them and
+      we'll bring this gallery to life.
+    </p>
+
+    <div class="photo-grid">
+      <div class="photo-slot featured">Norman at sea — coming soon</div>
+      <div class="photo-slot">Ship photo</div>
+      <div class="photo-slot">Port photo</div>
+      <div class="photo-slot">Ship photo</div>
+      <div class="photo-slot">Document scan</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOCUMENTS -->
+<div id="documents">
+  <div class="section-inner">
+    <p class="section-label">The Records</p>
+    <h2 class="section-title">Official documents</h2>
+    <div class="divider"></div>
+
+    <div class="doc-block">
+      <h3>The Discharge Book</h3>
+      <p>
+        Every Merchant Navy sailor carried a Discharge Book — an official government
+        record issued by the Labour Exchange. Each ship's captain would make an entry
+        on discharge, grading the sailor's conduct and ability.
+      </p>
+      <p>
+        <strong>VG</strong> (Very Good) was the mark of a reliable sailor. <strong>DR</strong>
+        (Decline to Report) was a serious black mark that could make finding future
+        berths very difficult.
+      </p>
+      <p>
+        Norman received his book in late summer 1951. Share a scan and we'll display it here.
+      </p>
+      <div class="doc-upload-area">+ Add scan of discharge book</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Norman Ahern</span>
+  <span class="footer-years">Born 26 July 1934 · Merchant Navy from 1951</span>
+  <p style="margin-top:1.2rem; font-size:0.78rem; opacity:0.5;">
+    A family tribute. Share more stories, ships, and photographs to grow this site.
+  </p>
+</footer>
+
+</body>
+</html>
