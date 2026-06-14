@@ -654,7 +654,7 @@
     <div class="canton-gallery">
       <div class="gallery-main">
         <img id="galleryMain"
-          src="https://raw.githubusercontent.com/aherndavid/merchant-navy/main/assets/merch1.jpg"
+          src="https://raw.githubusercontent.com/aherndavid/merchant-navy/main/assets/merch-1.webp"
           alt="SS Canton — photograph 1">
         <div id="galleryFallback" class="gallery-fallback" style="display:none;">
           <div>
@@ -782,28 +782,11 @@
   var fallback=document.getElementById('galleryFallback');
   var total=10;
 
-  function tryLoad(img, urls, onFail){
-    var i=0;
-    function next(){ if(i>=urls.length){onFail();return;} img.src=urls[i++]; }
-    img.onerror=function(){ next(); };
-    next();
-  }
-
   function setMain(n){
     mainImg.style.display='block';
     fallback.style.display='none';
-    var urls=[
-      BASE+'merch'+(n+1)+'.jpg',
-      BASE+'merch'+(n+1)+'.jpeg',
-      BASE+'merch'+(n+1)+'.png',
-      BASE+'merch%20'+(n+1)+'.jpg',
-      BASE+'merch%20'+(n+1)+'.jpeg',
-      BASE+'merch%20'+(n+1)+'.png'
-    ];
-    tryLoad(mainImg, urls, function(){
-      mainImg.style.display='none';
-      fallback.style.display='flex';
-    });
+    mainImg.src=BASE+'merch-'+(n+1)+'.webp';
+    mainImg.onerror=function(){ mainImg.style.display='none'; fallback.style.display='flex'; };
     caption.textContent='SS Canton \u00b7 Photo '+(n+1)+' of '+total;
     document.querySelectorAll('.gallery-thumb').forEach(function(t,i){ t.classList.toggle('active',i===n); });
   }
@@ -813,36 +796,20 @@
       var div=document.createElement('div');
       div.className='gallery-thumb'+(idx===0?' active':'');
       var img=document.createElement('img');
-      var urls=[
-        BASE+'merch'+(idx+1)+'.jpg',
-        BASE+'merch'+(idx+1)+'.jpeg',
-        BASE+'merch'+(idx+1)+'.png',
-        BASE+'merch%20'+(idx+1)+'.jpg'
-      ];
-      var fi=0;
-      img.onerror=function(){
-        fi++;
-        if(fi<urls.length){img.src=urls[fi];}
-        else{
-          img.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-num',textContent:idx+1}));
-        }
-      };
-      img.src=urls[0];
+      img.src=BASE+'merch-'+(idx+1)+'.webp';
       img.alt='Canton photo '+(idx+1);
+      img.onerror=function(){
+        img.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-num',textContent:idx+1}));
+      };
       div.appendChild(img);
       div.addEventListener('click',function(){setMain(idx);});
       thumbsWrap.appendChild(div);
     })(i);
   }
 
-  // Main image fallback
-  var mi=0;
-  var mainUrls=[BASE+'merch1.jpg',BASE+'merch1.jpeg',BASE+'merch1.png',BASE+'merch%201.jpg'];
-  mainImg.onerror=function(){
-    mi++;
-    if(mi<mainUrls.length){mainImg.src=mainUrls[mi];}
-    else{mainImg.style.display='none';fallback.style.display='flex';}
-  };
+  // Initial main image
+  mainImg.src=BASE+'merch-1.webp';
+  mainImg.onerror=function(){ mainImg.style.display='none'; fallback.style.display='flex'; };
 })();
 </script>
 
