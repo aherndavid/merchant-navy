@@ -633,29 +633,218 @@
   <p class="section-label">The Vessels</p>
   <h2 class="section-title">Ships Norman sailed on</h2>
   <div class="divider"></div>
-  <p style="color:#555; font-size:0.95rem; max-width:540px;">
-    Each ship below represents a chapter of Norman's career. Share more ships and
-    we'll add them here — with dates, routes, and photos if you have them.
-  </p>
 
-  <div class="ships-grid">
+  <!-- THE CANTON -->
+  <div class="canton-feature">
+    <div class="canton-header">
+      <div>
+        <p class="section-label" style="margin-bottom:0.4rem;">SS Canton · P&amp;O Line · 1951–52</p>
+        <h3 class="canton-title">The Canton</h3>
+        <p class="canton-subtitle">London to Hong Kong and back — Norman's first great voyage</p>
+      </div>
+      <div class="canton-spec-grid">
+        <div class="canton-spec"><span class="cs-label">Line</span><span class="cs-value">P&amp;O</span></div>
+        <div class="canton-spec"><span class="cs-label">Route</span><span class="cs-value">Far East</span></div>
+        <div class="canton-spec"><span class="cs-label">Voyage</span><span class="cs-value">1951–52</span></div>
+        <div class="canton-spec"><span class="cs-label">Type</span><span class="cs-value">Passenger / Cargo</span></div>
+      </div>
+    </div>
 
+    <!-- Photo gallery -->
+    <div class="canton-gallery">
+      <div class="gallery-main">
+        <img id="galleryMain"
+          src="https://raw.githubusercontent.com/aherndavid/merchant-navy/main/assets/merch1.jpg"
+          alt="SS Canton — photograph 1">
+        <div id="galleryFallback" class="gallery-fallback" style="display:none;">
+          <div>
+            <p>Photos will appear here once pushed to GitHub</p>
+            <code>assets/merch1.jpg … merch10.jpg</code>
+          </div>
+        </div>
+        <div class="gallery-caption" id="galleryCaption">SS Canton · Photo 1 of 10</div>
+      </div>
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+
+    <!-- Story -->
+    <div class="canton-story">
+      <p>The <strong>SS Canton</strong> was a P&amp;O passenger and cargo liner on the Far East run from London. It was aboard the Canton that Norman made his first great voyage — through the Suez Canal and across the Indian Ocean to Hong Kong, then the full journey home.</p>
+      <p style="margin-top:0.8rem;">The voyage carried him through some of the most storied waters on earth: the scorching Red Sea, the monsoon coasts of India, the charged streets of post-war Singapore, the jungle island of Penang with its rusting Japanese tank — and finally Hong Kong, where typhoons tied the ship to a buoy in the harbour.</p>
+    </div>
+
+    <!-- Route map -->
+    <div class="canton-map-wrap">
+      <p class="section-label" style="margin-bottom:1rem;">The Route — Outward &amp; Return</p>
+      <div class="canton-map">
+        <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+          <rect width="900" height="400" fill="#0d1f2d"/>
+          <!-- Grid lines -->
+          <line x1="0" y1="133" x2="900" y2="133" stroke="#1a3a52" stroke-width="1"/>
+          <line x1="0" y1="200" x2="900" y2="200" stroke="#1a3a52" stroke-width="1"/>
+          <line x1="0" y1="267" x2="900" y2="267" stroke="#1a3a52" stroke-width="1"/>
+          <!-- Landmasses -->
+          <ellipse cx="195" cy="68" rx="30" ry="20" fill="#1e3d52" opacity="0.9"/>
+          <text x="195" y="72" text-anchor="middle" fill="#4a7fa5" font-size="8" font-family="Inter,sans-serif">Britain</text>
+          <ellipse cx="255" cy="220" rx="44" ry="78" fill="#1e3d52" opacity="0.9"/>
+          <text x="255" y="225" text-anchor="middle" fill="#4a7fa5" font-size="8" font-family="Inter,sans-serif">Africa</text>
+          <ellipse cx="395" cy="180" rx="26" ry="30" fill="#1e3d52" opacity="0.9"/>
+          <ellipse cx="505" cy="208" rx="28" ry="40" fill="#1e3d52" opacity="0.9"/>
+          <ellipse cx="645" cy="235" rx="20" ry="28" fill="#1e3d52" opacity="0.9"/>
+          <ellipse cx="745" cy="162" rx="36" ry="28" fill="#1e3d52" opacity="0.9"/>
+          <!-- Outward route -->
+          <polyline points="195,82 300,115 345,138 378,160 408,182 442,207 498,218 532,225 590,242 622,246 643,238 685,208 738,208"
+            fill="none" stroke="#c9a84c" stroke-width="2.5" stroke-dasharray="7,3"/>
+          <!-- Return route -->
+          <polyline points="738,215 685,215 643,248 622,252 590,248 532,232 498,225 442,213 408,188 378,167 345,145 300,122 195,89"
+            fill="none" stroke="#4a7fa5" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.8"/>
+          <!-- Dots -->
+          <circle cx="195" cy="82" r="6" fill="#c9a84c"/>
+          <circle cx="345" cy="138" r="5" fill="#c9a84c"/>
+          <circle cx="408" cy="182" r="5" fill="#c9a84c"/>
+          <circle cx="498" cy="218" r="5" fill="#c9a84c"/>
+          <circle cx="532" cy="248" r="5" fill="#ffffff" stroke="#c9a84c" stroke-width="1.5"/>
+          <circle cx="622" cy="246" r="5" fill="#c9a84c"/>
+          <circle cx="643" cy="238" r="5" fill="#c9a84c"/>
+          <circle cx="738" cy="208" r="7" fill="#c9a84c"/>
+          <!-- Labels -->
+          <text x="195" y="70" text-anchor="middle" fill="#e8f0f5" font-size="10" font-family="Inter,sans-serif" font-weight="600">London</text>
+          <text x="345" y="127" text-anchor="middle" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Port Said</text>
+          <text x="408" y="198" text-anchor="middle" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Aden</text>
+          <text x="498" y="208" text-anchor="middle" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Bombay</text>
+          <text x="532" y="264" text-anchor="middle" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Colombo</text>
+          <text x="608" y="242" text-anchor="end" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Penang</text>
+          <text x="643" y="258" text-anchor="middle" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Singapore</text>
+          <text x="738" y="196" text-anchor="middle" fill="#e8f0f5" font-size="10" font-family="Inter,sans-serif" font-weight="600">Hong Kong</text>
+          <!-- Ocean labels -->
+          <text x="450" y="310" text-anchor="middle" fill="#1a3a52" font-size="13" font-family="Inter,sans-serif" letter-spacing="3" font-weight="600">INDIAN OCEAN</text>
+          <text x="700" y="320" text-anchor="middle" fill="#1a3a52" font-size="10" font-family="Inter,sans-serif" letter-spacing="2">S. CHINA SEA</text>
+          <text x="120" y="185" text-anchor="middle" fill="#1a3a52" font-size="10" font-family="Inter,sans-serif" letter-spacing="1">ATLANTIC</text>
+          <text x="363" y="280" text-anchor="middle" fill="#1a3a52" font-size="9" font-family="Inter,sans-serif" letter-spacing="1">RED SEA</text>
+          <!-- Legend -->
+          <line x1="30" y1="378" x2="58" y2="378" stroke="#c9a84c" stroke-width="2.5" stroke-dasharray="7,3"/>
+          <text x="64" y="382" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Outward voyage</text>
+          <line x1="175" y1="378" x2="203" y2="378" stroke="#4a7fa5" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.8"/>
+          <text x="209" y="382" fill="#e8f0f5" font-size="9" font-family="Inter,sans-serif">Return voyage</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other ships -->
+  <div class="ships-grid" style="margin-top:3rem;">
     <div class="ship-card">
       <h3 class="ship-name">KG5</h3>
       <p class="ship-meta">King George V · London Docks · 1951</p>
-      <p class="ship-desc">Norman's first ship. Allocated by the clerk at Lednal Street and berthed in the London Docks when he stepped aboard for the very first time.</p>
-      <div class="ship-photo-placeholder">+ Add photo</div>
+      <p class="ship-desc">Norman's very first posting — allocated at Lednal Street, berthed in the London Docks. The ship where his seafaring life began.</p>
     </div>
-
-    <!-- Placeholder for more ships -->
-    <div class="ship-card" style="border-top-color: var(--foam); opacity: 0.5;">
+    <div class="ship-card" style="border-top-color:var(--foam); opacity:0.5;">
       <h3 class="ship-name" style="color:var(--mist);">More ships to come</h3>
-      <p class="ship-meta">Share names & dates</p>
-      <p class="ship-desc">Add the ships Norman served on and we'll build out each card with details, photos, and routes.</p>
+      <p class="ship-meta">Share names &amp; dates</p>
+      <p class="ship-desc">Add more ships Norman served on and we'll build out each card.</p>
     </div>
-
   </div>
+
 </section>
+
+<style>
+.canton-feature { margin-top:2rem; border-top:3px solid var(--gold); padding-top:2.5rem; }
+.canton-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem; margin-bottom:2rem; }
+.canton-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); color:var(--navy); font-weight:400; line-height:1.1; }
+.canton-subtitle { font-size:0.88rem; color:var(--mist); margin-top:0.4rem; font-style:italic; }
+.canton-spec-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1.4rem; flex-shrink:0; }
+.canton-spec { display:flex; flex-direction:column; }
+.cs-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--mist); }
+.cs-value { font-size:0.9rem; color:var(--navy); font-weight:500; }
+.canton-gallery { margin-bottom:2rem; }
+.gallery-main { position:relative; background:var(--navy); width:100%; aspect-ratio:16/9; overflow:hidden; margin-bottom:4px; }
+.gallery-main img { width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; transition:opacity 0.3s; }
+.gallery-fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; color:var(--mist); font-size:0.85rem; line-height:1.8; padding:2rem; }
+.gallery-fallback code { display:block; margin-top:0.5rem; color:var(--gold); font-size:0.78rem; }
+.gallery-caption { font-size:0.72rem; color:var(--mist); letter-spacing:0.08em; text-transform:uppercase; padding:0.4rem 0.8rem; background:var(--navy); display:inline-block; }
+.gallery-thumbs { display:grid; grid-template-columns:repeat(10,1fr); gap:4px; margin-top:4px; }
+.gallery-thumb { aspect-ratio:1; background:var(--ocean); cursor:pointer; overflow:hidden; border:2px solid transparent; transition:border-color 0.2s; }
+.gallery-thumb:hover,.gallery-thumb.active { border-color:var(--gold); }
+.gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.thumb-num { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:var(--mist); }
+.canton-story { max-width:640px; color:#444; font-size:0.95rem; line-height:1.8; margin-bottom:2.5rem; }
+.canton-map-wrap { margin-bottom:1rem; }
+.canton-map { background:var(--navy); border-top:3px solid var(--gold); overflow:hidden; }
+@media(max-width:600px){ .canton-header{flex-direction:column;} .gallery-thumbs{grid-template-columns:repeat(5,1fr);} }
+</style>
+
+<script>
+(function(){
+  var BASE='https://raw.githubusercontent.com/aherndavid/merchant-navy/main/assets/';
+  var mainImg=document.getElementById('galleryMain');
+  var caption=document.getElementById('galleryCaption');
+  var thumbsWrap=document.getElementById('galleryThumbs');
+  var fallback=document.getElementById('galleryFallback');
+  var total=10;
+
+  function tryLoad(img, urls, onFail){
+    var i=0;
+    function next(){ if(i>=urls.length){onFail();return;} img.src=urls[i++]; }
+    img.onerror=function(){ next(); };
+    next();
+  }
+
+  function setMain(n){
+    mainImg.style.display='block';
+    fallback.style.display='none';
+    var urls=[
+      BASE+'merch'+(n+1)+'.jpg',
+      BASE+'merch'+(n+1)+'.jpeg',
+      BASE+'merch'+(n+1)+'.png',
+      BASE+'merch%20'+(n+1)+'.jpg',
+      BASE+'merch%20'+(n+1)+'.jpeg',
+      BASE+'merch%20'+(n+1)+'.png'
+    ];
+    tryLoad(mainImg, urls, function(){
+      mainImg.style.display='none';
+      fallback.style.display='flex';
+    });
+    caption.textContent='SS Canton \u00b7 Photo '+(n+1)+' of '+total;
+    document.querySelectorAll('.gallery-thumb').forEach(function(t,i){ t.classList.toggle('active',i===n); });
+  }
+
+  for(var i=0;i<total;i++){
+    (function(idx){
+      var div=document.createElement('div');
+      div.className='gallery-thumb'+(idx===0?' active':'');
+      var img=document.createElement('img');
+      var urls=[
+        BASE+'merch'+(idx+1)+'.jpg',
+        BASE+'merch'+(idx+1)+'.jpeg',
+        BASE+'merch'+(idx+1)+'.png',
+        BASE+'merch%20'+(idx+1)+'.jpg'
+      ];
+      var fi=0;
+      img.onerror=function(){
+        fi++;
+        if(fi<urls.length){img.src=urls[fi];}
+        else{
+          img.replaceWith(Object.assign(document.createElement('div'),{className:'thumb-num',textContent:idx+1}));
+        }
+      };
+      img.src=urls[0];
+      img.alt='Canton photo '+(idx+1);
+      div.appendChild(img);
+      div.addEventListener('click',function(){setMain(idx);});
+      thumbsWrap.appendChild(div);
+    })(i);
+  }
+
+  // Main image fallback
+  var mi=0;
+  var mainUrls=[BASE+'merch1.jpg',BASE+'merch1.jpeg',BASE+'merch1.png',BASE+'merch%201.jpg'];
+  mainImg.onerror=function(){
+    mi++;
+    if(mi<mainUrls.length){mainImg.src=mainUrls[mi];}
+    else{mainImg.style.display='none';fallback.style.display='flex';}
+  };
+})();
+</script>
 
 <!-- PORTS -->
 <section id="ports">
