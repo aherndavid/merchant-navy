@@ -78,6 +78,16 @@
     overflow: hidden;
   }
 
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://raw.githubusercontent.com/aherndavid/merchant-navy/main/assets/merch-11.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: 0;
+  }
+
   /* Subtle wave lines — the site's signature */
   .hero::before {
     content: '';
@@ -545,6 +555,7 @@
 
 <!-- HERO -->
 <header class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
     <p class="hero-eyebrow">Merchant Navy · 1951 onwards</p>
     <h1>Norman<br><em>Ahern</em></h1>
