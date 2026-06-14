@@ -88,21 +88,7 @@
     z-index: 0;
   }
 
-  /* Subtle wave lines — the site's signature */
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        -8deg,
-        transparent,
-        transparent 38px,
-        rgba(74,127,165,0.07) 38px,
-        rgba(74,127,165,0.07) 40px
-      );
-    pointer-events: none;
-  }
+
 
   .hero-inner {
     max-width: 900px;
@@ -524,14 +510,119 @@
   }
 
   /* ── RESPONSIVE ── */
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.72rem; }
+    section { padding: 3.5rem 1.6rem; }
+    #story > .section-inner,
+    #documents > .section-inner,
+    #photos > .section-inner { padding: 3.5rem 1.6rem; }
+    .ships-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Mobile */
   @media (max-width: 600px) {
-    nav { padding: 0 1.2rem; }
-    .nav-links { gap: 1.2rem; }
-    .hero-inner, section { padding-left: 1.4rem; padding-right: 1.4rem; }
-    .photo-grid { grid-template-columns: 1fr 1fr; }
-    .photo-slot.featured { grid-column: span 2; }
+
+    /* Nav — hamburger-style horizontal scroll */
+    nav {
+      padding: 0 1rem;
+      height: 52px;
+    }
+    .nav-name { font-size: 0.85rem; }
+    .nav-links {
+      gap: 0.9rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 0.68rem; white-space: nowrap; }
+
+    /* Hero */
+    .hero { min-height: 100svh; padding: 0 0 3.5rem 0; }
+    .hero-inner { padding: 0 1.2rem; }
+    .hero h1 { font-size: 3rem; }
+    .hero-dates { font-size: 0.95rem; }
+    .hero-desc { font-size: 0.92rem; }
+
+    /* Sections */
+    section,
+    #story > .section-inner,
+    #documents > .section-inner,
+    #photos > .section-inner { padding: 3rem 1.2rem; }
+    .section-title { font-size: 1.7rem; }
+
+    /* Timeline */
     .timeline::before { left: 8px; }
-    .tl-dot { width: 18px; height: 18px; }
+    .tl-dot { width: 18px; height: 18px; margin-top: 3px; }
+    .tl-item { gap: 1rem; margin-bottom: 2rem; }
+    .tl-title { font-size: 1.05rem; }
+
+    /* Route ribbon */
+    .route-ribbon {
+      font-size: 0.78rem;
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    /* Port stories */
+    .port-story {
+      grid-template-columns: 1fr;
+      padding: 1.4rem 0;
+    }
+    .ps-left {
+      border-right: none;
+      border-bottom: 1px solid var(--foam);
+      padding-right: 0;
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .ps-location { margin-bottom: 0; }
+    .ps-country { margin-bottom: 0; }
+    .ps-duration { margin-left: auto; flex-shrink: 0; }
+    .ps-right { padding-left: 0; }
+    .ps-body { font-size: 0.9rem; }
+
+    /* Canton feature */
+    .canton-header { flex-direction: column; gap: 1rem; }
+    .canton-title { font-size: 2rem; }
+    .canton-spec-grid { grid-template-columns: repeat(4, auto); gap: 0.4rem 1rem; }
+    .gallery-thumbs { grid-template-columns: repeat(5, 1fr); gap: 3px; }
+    .gallery-caption { font-size: 0.68rem; }
+
+    /* SVG map — allow horizontal scroll on small screens */
+    .canton-map { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .canton-map svg { min-width: 560px; }
+
+    /* Ships grid */
+    .ships-grid { grid-template-columns: 1fr; }
+
+    /* Photos */
+    .photo-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .photo-slot.featured { grid-column: span 2; }
+    .photo-slot { font-size: 0.65rem; }
+
+    /* Documents */
+    .doc-block { padding: 1.4rem 1.2rem; }
+
+    /* Return journey section */
+    .return-ribbon {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer { padding: 2.5rem 1.2rem; }
+    footer .footer-name { font-size: 1.2rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -613,7 +704,7 @@
           <h3 class="tl-title">The Discharge Book</h3>
           <p class="tl-body">
             From the Labour Exchange, Norman was issued his Discharge Book — the official
-            record carried by every Merchant Navy sailor. An entry of <strong>VG</strong> meant
+            record carried by every Merchant Navy seaman. An entry of <strong>VG</strong> meant
             good conduct; <strong>DR</strong> would indicate the opposite. Norman's record would
             follow him across every ship and every ocean he sailed.
           </p>
@@ -1019,7 +1110,7 @@
           <strong>The Star Ferry.</strong> For just <strong>sixpence</strong>, Norman crossed
           the harbour from Kowloon on the mainland to Hong Kong Island — about a mile of open
           water. The ferry carried around <strong>500 passengers</strong> at a time, packed with
-          locals, traders, and the occasional merchant sailor.
+          locals, traders, and the occasional merchant seaman.
         </p>
         <p class="ps-body" style="margin-top:0.9rem;">
           <strong>The markets.</strong> Rolex watches — the real thing — were on sale at the
@@ -1042,7 +1133,7 @@
           <strong>The typhoons.</strong> When the high winds came, the ship was moved from
           the docks and <strong>tied to a buoy in the harbour</strong> to ride out the storm.
           The lightning that accompanied the typhoons lit up the entire harbour —
-          an awesome and frightening sight for a young sailor far from home.
+          an awesome and frightening sight for a young seaman far from home.
         </p>
         <div class="ps-tags">
           <span class="ps-tag">Extended stay</span>
@@ -1125,12 +1216,12 @@
     <div class="doc-block">
       <h3>The Discharge Book</h3>
       <p>
-        Every Merchant Navy sailor carried a Discharge Book — an official government
+        Every Merchant Navy seaman carried a Discharge Book — an official government
         record issued by the Labour Exchange. Each ship's captain would make an entry
-        on discharge, grading the sailor's conduct and ability.
+        on discharge, grading the seaman's conduct and ability.
       </p>
       <p>
-        <strong>VG</strong> (Very Good) was the mark of a reliable sailor. <strong>DR</strong>
+        <strong>VG</strong> (Very Good) was the mark of a reliable seaman. <strong>DR</strong>
         (Decline to Report) was a serious black mark that could make finding future
         berths very difficult.
       </p>
